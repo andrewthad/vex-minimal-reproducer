@@ -1,0 +1,20 @@
+{-# language DataKinds #-}
+{-# language KindSignatures #-}
+{-# language MagicHash #-}
+{-# language RankNTypes #-}
+{-# language UnboxedTuples #-}
+
+signature Array where
+
+import Data.Kind (Type)
+import GHC.Exts (TYPE,RuntimeRep(UnliftedRep),State#,Int#)
+
+import Internal
+
+data R :: RuntimeRep
+data M :: Type -> TYPE R -> Type
+
+uninitialized# :: forall (s :: Type) (a :: TYPE R).
+     Int#
+  -> State# s
+  -> (# State# s, M s a #)

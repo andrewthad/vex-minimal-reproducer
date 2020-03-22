@@ -1,0 +1,19 @@
+{-# language DataKinds #-}
+{-# language KindSignatures #-}
+{-# language MagicHash #-}
+{-# language RankNTypes #-}
+{-# language UnboxedTuples #-}
+
+signature Element where
+
+import GHC.Exts (State#,Int#,TYPE)
+import Data.Kind (Type)
+
+import Array (M,R)
+
+write# :: forall (s :: Type) (a :: TYPE R).
+     M s a
+  -> Int#
+  -> a
+  -> State# s
+  -> State# s

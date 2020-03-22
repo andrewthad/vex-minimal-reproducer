@@ -1,0 +1,10 @@
+{-# language DataKinds #-}
+{-# language KindSignatures #-}
+
+signature Representation where
+
+import GHC.Exts
+
+data R :: RuntimeRep
+
+width :: Int
